@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Follow Patrick on Instagram</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: "Poppins", sans-serif;
+      overflow: hidden;
+    }
+
+    /* Full-screen background */
+    body {
+      background: url("https://your-image-link-here.jpg") no-repeat center center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      color: white;
+      text-align: center;
+    }
+
+    /* Blurred overlay */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5);
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    h1 {
+      font-size: 2.2em;
+      margin-bottom: 15px;
+    }
+
+    .instagram-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
+      background-size: 300% 300%;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      animation: gradientMove 4s infinite alternate;
+    }
+
+    @keyframes gradientMove {
+      from {
+        background-position: 0% 50%;
+      }
+      to {
+        background-position: 100% 50%;
+      }
+    }
+
+    .instagram-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px #e1306c;
+    }
+
+    .instagram-btn i {
+      font-size: 1.4em;
+    }
+
+    .share-text {
+      margin-top: 20px;
+      font-size: 1.1em;
+      opacity: 0.9;
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      color: #ff4d79;
+      font-size: 20px;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    /* Moving Instagram icon */
+    .floating-icon {
+      position: absolute;
+      font-size: 50px;
+      color: #e1306c;
+      animation: moveAround 10s infinite linear;
+      opacity: 0.9;
+      z-index: 2;
+      filter: drop-shadow(0 0 10px #e1306c);
+    }
+
+    @keyframes moveAround {
+      0% {
+        top: 10%;
+        left: 10%;
+      }
+      25% {
+        top: 10%;
+        left: 80%;
+      }
+      50% {
+        top: 80%;
+        left: 80%;
+      }
+      75% {
+        top: 80%;
+        left: 10%;
+      }
+      100% {
+        top: 10%;
+        left: 10%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <i class="fab fa-instagram floating-icon"></i>
+
+  <div class="container">
+    <h1>Follow <span style="color: #e1306c;">@its_patrick_98</span> on Instagram</h1>
+    <a class="instagram-btn" href="#" id="instalink">
+      <i class="fab fa-instagram"></i> Open Instagram
+    </a>
+    <p class="share-text">
+      📣 Share this link with your friends to help me reach 20k followers!
+    </p>
+  </div>
+
+  <script>
+    // Floating hearts
+    for (let i = 0; i < 15; i++) {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDelay = Math.random() * 5 + "s";
+      heart.innerHTML = "❤";
+      document.body.appendChild(heart);
+    }
+
+    // Instagram open logic
+    const instaUsername = "its_patrick_98";
+    const instaLink = document.getElementById("instalink");
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    if (isMobile) {
+      instaLink.href = `instagram://user?username=${instaUsername}`;
+    } else {
+      instaLink.href = `https://www.instagram.com/${instaUsername}/`;
+    }
+  </script>
+</body>
+</html>
